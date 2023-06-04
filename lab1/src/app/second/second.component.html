@@ -1,0 +1,36 @@
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label"
+    >Enter number of products</label
+  >
+  <input
+    type="text"
+    class="form-control"
+    id="exampleInputEmail1"
+    aria-describedby="emailHelp"
+    [(ngModel)]="count"
+  />
+</div>
+
+<div *ngIf="products$ | async as products">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Code</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">In Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products.slice(0, count)">
+        <!-- <th scope="row">1</th> -->
+        <td>{{ product.title }}</td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
